@@ -39,3 +39,16 @@ while (current) {
         }
      ...
 ```
+
+### Reverse Linked List
+- [题目](http://www.lintcode.com/problem/reverse-linked-list/)
+- [答案](http://www.jiuzhang.com/solutions/reverse-linked-list/)
+- 返回值应以NULL结尾，所以previous一开始要指向NULL
+```cpp
+ListNode* previous = NULL;
+ListNode* current = head;
+```
+- 注意最后的返回值为previous
+```cpp
+eturn previous;
+```
