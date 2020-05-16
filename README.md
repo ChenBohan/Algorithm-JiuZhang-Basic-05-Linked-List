@@ -52,3 +52,19 @@ ListNode* current = head;
 ```cpp
 return previous;
 ```
+
+### Reverse Linked List II
+- [题目](http://www.lintcode.com/problem/reverse-linked-list-ii/)
+- [答案](http://www.jiuzhang.com/solutions/reverse-linked-list-ii/)
+- 思路
+  - 找到第m-1个Node
+  - 翻转指定区间的链表
+  - connect m-1 to n, m to n+1
+  - 返回dummynode的下一个节点。
+- 注意开头要排除`m == n`的情况
+```cpp
+if (!head || m >= n) {
+    return head;
+}
+```
+- 注意要加上dummy node
