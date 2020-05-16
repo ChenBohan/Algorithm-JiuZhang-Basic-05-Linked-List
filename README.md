@@ -50,5 +50,5 @@ ListNode* current = head;
 ```
 - 注意最后的返回值为previous
 ```cpp
-eturn previous;
+return previous;
 ```
