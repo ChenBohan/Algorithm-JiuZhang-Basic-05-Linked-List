@@ -60,7 +60,7 @@ return previous;
   - 找到第m-1个Node
   - 翻转指定区间的链表
   - connect m-1 to n, m to n+1
-  - 返回dummynode的下一个节点。
+  - 返回dummy node的下一个节点。
 - 注意开头要排除`m == n`的情况
 ```cpp
 if (!head || m >= n) {
@@ -68,3 +68,4 @@ if (!head || m >= n) {
 }
 ```
 - 注意要加上dummy node
+- 不访问node->next->val时，node->next可以为NULL
