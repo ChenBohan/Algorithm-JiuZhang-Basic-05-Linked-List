@@ -15,15 +15,27 @@
 - [题目](http://www.lintcode.com/problem/remove-duplicates-from-sorted-list-ii/)
 - [答案](http://www.jiuzhang.com/solutions/remove-duplicates-from-sorted-list-ii/)
 - Dummy Node
-  - 加上一个假的head，方便删除原head
+  - 加上一个dummy node在head之前，方便删除原head并return
   
 ```cpp
+ListNode* dummyNode = new ListNode(0);
+dummyNode->next = head;
 
+ListNode* previous = dummyNode;
+ListNode* current = dummyNode->next;
+
+...
+
+return dummyNode->next;
 ```
 
 - 访问`.next`前要检查其是否存在
 ```cpp
-
+while (current) {
+    if (current->next && current->val == current->next->val) {
+        int val = current->val;
+        while (current && current->val == val) {
+            current = current->next;
+        }
+     ...
 ```
-
-- 如何删除一个ListNode
