@@ -5,6 +5,8 @@
 
 - 面试出题频率
   - 链表 > 广度深度优先搜素 > 动态规划
+- 链表与数组相比
+  - 灵活：可以随意地更改排列顺序，不需要额外的存储空间(in place)
 - 大纲
   - Dummy Node in Linked List
     - 当链表结构可能发生变化 -> head可能变化 -> 需要dummy node
@@ -62,11 +64,26 @@ return previous;
   - 翻转指定区间的链表
   - connect m-1 to n, m to n+1
   - 返回dummy node的下一个节点。
-- 注意开头要排除`m == n`的情况
+- 注意
+  - 开头要排除`m == n`的情况
 ```cpp
 if (!head || m >= n) {
     return head;
 }
 ```
-- 注意要加上dummy node
-- 不访问node->next->val时，node->next可以为NULL
+  - 要加上dummy node
+  - 不访问node->next->val时，node->next可以为NULL
+
+### Partition List
+- [题目](http://www.lintcode.com/problem/partition-list/)
+- [答案](http://www.jiuzhang.com/solutions/partition-list/)
+- 思路
+  - 双指针方法，用两个指针将两个部分分别串起来。最后在将两个部分拼接起来。
+    - left指针用来串起来所有小于x的结点，
+    - right指针用来串起来所有大于等于x的结点。
+    - 得到两个链表，一个是小于x的，一个是大于等于x的，做一个拼接即可。
+- 注意
+  - return前要检查链表末尾是否为NULL
+```cpp
+right->next = NULL;
+```
