@@ -3,15 +3,21 @@
 
 ### 前言
 
-- 面试出题频率
-  - 链表 > 广度深度优先搜素 > 动态规划
-- 链表与数组相比
-  - 灵活：可以随意地更改排列顺序，不需要额外的存储空间(in place)
 - 大纲
   - Dummy Node in Linked List
     - 当链表结构可能发生变化 -> head可能变化 -> 需要dummy node
   - Basic Linked List Skills
   - Two Pointers in Linked List (Fast-slow pointers)
+- 面试出题频率
+  - 链表 > 广度深度优先搜素 > 动态规划
+- 链表与数组相比
+  - 灵活：可以随意地更改排列顺序，不需要额外的存储空间(in place)
+- Basic Skills in Linked List
+  - 1. Insert a Node in Sorted List
+  - 2. Remove a Node from Linked List
+  - 3. Reverse a Linked List
+  - 4. Merge Two Linked Lists
+  - 5. Middle of a Linked List
 
 ### Remove Duplicates from Sorted List II
 
@@ -97,3 +103,16 @@ return dummyLeft->next;
 ```cpp
 right->next = NULL;
 ```
+
+- O(nlogn)的排序
+  - quick sort（要掌握）
+    - 先整体有序，再局部有序
+    - 不稳定，不能保持原相对顺序
+    - 时间复杂度平均为O(nlogn)，最坏情况为O(n^2)
+    - 空间复杂度O(1)
+  - merge sort（要掌握）
+    - 先局部有序，再整体有序
+    - 稳定排序，能保持相对顺序
+    - 时间复杂度，最好最坏都是O(nlogn)
+    - 空间复杂度O(n)
+  - heap sort
