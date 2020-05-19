@@ -7,6 +7,7 @@
   - 链表 > 广度深度优先搜素 > 动态规划
 - 大纲
   - Dummy Node in Linked List
+    - 当链表结构可能发生变化 -> head可能变化 -> 需要dummy node
   - Basic Linked List Skills
   - Two Pointers in Linked List (Fast-slow pointers)
 
