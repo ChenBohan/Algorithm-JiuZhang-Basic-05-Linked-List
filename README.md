@@ -82,6 +82,16 @@ if (!head || m >= n) {
     - left指针用来串起来所有小于x的结点，
     - right指针用来串起来所有大于等于x的结点。
     - 得到两个链表，一个是小于x的，一个是大于等于x的，做一个拼接即可。
+```cpp
+ListNode* dummyLeft = new ListNode(0);
+ListNode* dummyRight = new ListNode(0);
+ListNode* right = dummyRight;
+ListNode* left = dummyLeft;
+...
+right->next = NULL;
+left->next = dummyRight->next;
+return dummyLeft->next;
+```
 - 注意
   - return前要检查链表末尾是否为NULL
 ```cpp
