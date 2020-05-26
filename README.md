@@ -120,13 +120,68 @@ right->next = NULL;
     - 空间复杂度O(n)
   - heap sort
 - Merge Sort基本步骤
+  - 0.因为递归，所以先判断递归中止条件
+    ```cpp
+    if (head == NULL || head->next == NULL) {
+      return head;
+    }
+    ```
   - 1.中间切一刀，分为左右两边
     - 求中点：
       - 数组：用中间下标
       - List：快慢指针
         - `fast = head`或`fast = head->next`决定了偶数个点时偏左或者偏右
+        ```cpp
+        ListNode* findMiddle(ListNode* head) {
+          ListNode* slow = head;
+          ListNode* fast = head->next;
+          if (fast != NULL && fast->next != NULL) {
+              fast = fast->next->next;
+              slow = slow->next;
+          }
+          return slow;
+        }
+        ```
   - 2.递归地sort左右数组（分治法的思想）
+    ```cpp
+    public ListNode sortList(ListNode head) {
+      if (head == null || head.next == null) {
+          return head;
+      }
+
+      ListNode mid = findMiddle(head);
+
+      ListNode right = sortList(mid.next);
+      mid.next = null;
+      ListNode left = sortList(head);
+
+      return merge(left, right);
+    }
+    ```
   - 3.merge数组
     - 设置dummy node `tail`
     - 依次比较两个数组的节点，谁小谁接到tail的list上
     - 直到某一个链表空了以后，把剩下的都接上去
+      ```cpp
+      ListNode* merge(ListNode* left, ListNode* right) {
+        ListNode* dummy = new ListNode(0);
+        ListNode* tail = dummy;
+
+        while(left != NULL && right != NULL) {
+            if (left->val < right->val) {
+                tail->next = left;
+                left = left->next;
+            } else {
+                tail->next = right;
+                right = right->next;
+            }
+            tail = tail->next;
+        }
+        if (left != NULL) {
+            tail->next = left;
+        } else {
+            tail->next = right;
+        }
+        return dummy->next;
+      }
+      ```
