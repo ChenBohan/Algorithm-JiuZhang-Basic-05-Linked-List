@@ -104,7 +104,10 @@ return dummyLeft->next;
 right->next = NULL;
 ```
 
-- O(nlogn)的排序
+### sort-list
+
+- [题目](https://www.lintcode.com/problem/sort-lis/description)
+- O(nlogn)的排序方法
   - quick sort（要掌握）
     - 先整体有序，再局部有序
     - 不稳定，不能保持原相对顺序
@@ -116,3 +119,13 @@ right->next = NULL;
     - 时间复杂度，最好最坏都是O(nlogn)
     - 空间复杂度O(n)
   - heap sort
+- Merge Sort基本步骤
+  - 1.中间切一刀，分为左右两边
+    - 求中点：
+      - 数组：用中间下标
+      - List：快慢指针
+        - `fast = head`或`fast = head->next`决定了偶数个点时偏左或者偏右
+  - 3.merge数组
+    - 设置逐个比较两个list的节点
+      - 数组：用中间下标一个
+      - 数组：用中间下标
