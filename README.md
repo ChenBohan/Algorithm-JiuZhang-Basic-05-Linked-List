@@ -185,3 +185,46 @@ right->next = NULL;
         return dummy->next;
       }
       ```
+  - quick sort
+    - 快排思路
+      ```cpp
+      while (node != NULL) {
+          if (node->val < tail->val) {
+              // cout<<"left"<<node->val<<endl;
+              leftTail->next = node;
+              leftTail = leftTail->next;
+          } else if (node->val == tail->val) {
+              // cout<<"mid"<<node->val<<endl;
+              midTail->next = node;
+              midTail = midTail->next;
+          } else {
+              // cout<<"right"<<node->val<<endl;
+              rightTail->next = node;
+              rightTail = rightTail->next;
+          }
+          node = node->next;
+      }
+
+      leftTail->next = NULL;
+      midTail->next = NULL;
+      rightTail->next = NULL;
+
+      ListNode* right = sortList(dummyRight->next);
+      ListNode* left = sortList(dummyLeft->next);
+
+      return concat(left, dummyMid->next, right);
+      ```
+    - 注意
+      - concat函数要考虑left\mid\right任意一个为NULL的情况
+        ```cpp
+        ListNode* concat(ListNode* left, ListNode* mid, ListNode* right) {
+          ListNode* dummy = new ListNode(0);
+          ListNode* tail = dummy;
+          tail->next = left;
+          tail = getTail(tail);
+          tail->next = mid;
+          tail = getTail(tail);
+          tail->next = right;
+          return dummy->next;
+        }
+        ```
