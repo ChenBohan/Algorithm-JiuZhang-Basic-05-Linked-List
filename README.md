@@ -224,7 +224,52 @@ right->next = NULL;
         tail = getTail(tail);
         tail->next = mid;
         tail = getTail(tail);
-        tail->next = right;
+        tail->next = right;### Reorder List
         return dummy->next;
       }
+      ```
+
+### Reorder List
+
+- [题目](http://www.lintcode.com/problem/reorder-list/)
+- [答案](http://www.jiuzhang.com/solutions/reorder-list/)
+- 思路
+  - 先找到中点，然后把后半段倒过来，然后前后交替合并
+    - reverse：先用temp存head->next，然后让head->next指向head（newNode协助），最后移动至head->next即temp
+      ```cpp
+      auto reverse = [](ListNode* head){
+          ListNode* newNode = NULL;
+          while (head) {
+              ListNode* temp = head->next;
+              head->next = newNode;
+              newNode = head;
+              head = temp;
+          }
+          return newNode;
+      };
+      ```
+    - merge
+      ```cpp
+      auto merge = [](ListNode* head, ListNode* tail) {
+          int index = 0;
+          ListNode* dummy = new ListNode(0);
+          cout<<head->val<<" "<<tail->val;
+          while(head != NULL && tail != NULL) {
+              if (index % 2 == 0){
+                  dummy->next = head;
+                  head = head->next;
+              } else {
+                  dummy->next = tail;
+                  tail = tail->next;
+              }
+              dummy = dummy->next;
+              index++;
+          }
+          if (head != NULL) {
+              dummy->next = head;
+          }
+          if (tail != NULL) {
+              dummy->next = tail;
+          }
+      };
       ```
